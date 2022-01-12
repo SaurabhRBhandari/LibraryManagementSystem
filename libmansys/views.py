@@ -1,17 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse, response
-from django.views.generic import TemplateView
-from .models import Book,Student
-def index(request):
-    student_list=Student.objects.all()
-    student_id_list=[]
-    for student in student_list:
-        student_id_list.append(student.user_ID)
-    current_user_id=request.user.id
-    if current_user_id not in student_id_list:
-        s=Student(user_ID=current_user_id)
-        s.save()
-        
+from django.http import HttpResponse
+from .models import Book
+from .functions import if_new_user
+
+def user_home(request):
+    if_new_user(request)
     return render(request,'libmansys/home.html')
 
 def detail(request, ISBN):

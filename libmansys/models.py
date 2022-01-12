@@ -13,7 +13,7 @@ class Book(models.Model):
         return str(self.name) + " ["+str(self.isbn)+']'
 
 class Student(models.Model):
-    user_ID=models.IntegerField(default=-1)
+    user_ID=models.IntegerField(default=-1)#A unique no. generated for every user
     BITS_ID=models.CharField(max_length=20,default='NOT YET UPDATED')
     mobile_number=models.IntegerField(default=-1)
     room_no=models.IntegerField(default=-1)
