@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+
 class Book(models.Model):
     name = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
@@ -13,11 +13,10 @@ class Book(models.Model):
         return str(self.name) + " ["+str(self.isbn)+']'
 
 class Student(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    classroom = models.CharField(max_length=10)
-    branch = models.CharField(max_length=10)
-    roll_no = models.CharField(max_length=3, blank=True)
-    phone = models.CharField(max_length=10, blank=True)
-    image = models.ImageField(upload_to="", blank=True)
+    user_ID=models.IntegerField(default=-1)
+    BITS_ID=models.CharField(max_length=20,default='NOT YET UPDATED')
+    mobile_number=models.IntegerField(default=-1)
+    room_no=models.IntegerField(default=-1)
+    hostel=models.IntegerField(default=-1)#index of college
     def __str__(self):
-        return str(self.user) + " ["+str(self.branch)+']' + " ["+str(self.classroom)+']' + " ["+str(self.roll_no)+']'
+        return  str(self.user_ID)
