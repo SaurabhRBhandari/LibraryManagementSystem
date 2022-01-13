@@ -1,22 +1,23 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Book
-from .functions import if_new_user
+from .functions import is_new_user
 
 
 def user_home(request):
-    if_new_user(request)
-    return render(request, 'libmansys/home.html')
+    if(is_new_user(request)):
+        pass
+    else:
+        return render(request, 'libmansys/user_home.html')
 
 
 def detail(request, ISBN):
     book = Book.objects.filter(isbn=ISBN)[0]
-    response = f'Name:{book.name} <br> Author:{book.author} <br> ISBN-10:{book.isbn} <br> Availibility:{book.availability}'
-    return HttpResponse(response)
+    context={'book':book}
+    return render(request, 'libmansys/book_detail.html',context)
+
 
 
 def booklist(request):
     book_list = Book.objects.all()
-    output = '<br>'.join(
-        [f'{b.name}|{b.author}|{b.isbn}|{b.publisher}' for b in book_list])
-    return HttpResponse(output)
+    context={'book_list':book_list}
+    return render(request,'libmansys/book_list.html',context)

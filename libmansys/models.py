@@ -16,9 +16,9 @@ class Book(models.Model):
 
 
 class Student(models.Model):
+    BITS_ID = models.CharField(max_length=20, default='NOT YET UPDATED')
     # A unique no. generated for every user
     user_ID = models.IntegerField(default=-1)
-    BITS_ID = models.CharField(max_length=20, default='NOT YET UPDATED')
     mobile_number = models.IntegerField(default=-1)
     room_no = models.IntegerField(default=-1)
     hostel = models.IntegerField(default=-1)  # index of college

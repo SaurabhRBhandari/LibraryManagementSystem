@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-
+app_name='libmansys'
 urlpatterns = [
     # redirect the user to user home page
     path('', views.user_home, name='index'),
