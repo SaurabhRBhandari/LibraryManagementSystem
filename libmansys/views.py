@@ -6,20 +6,8 @@ from .forms import NewStudentForm
 
 
 def user_home(request):
-    # TODO:Check this view properly
     is_new_user(request)
-    student = Student.objects.get(user_ID=request.user.id)
-    if(request.method == 'POST'):
-        s_form = NewStudentForm(request.POST, instance=student)
-        if s_form.is_valid:
-            s_form.save()
-        return render(request, 'libmansys/user_home.html')
-    elif(is_new_user):
-        s_form = NewStudentForm(instance=student)
-        context = {'s_form': s_form}
-        return render(request, 'libmansys/update_user_profile.html', context)
-    else:
-        return render(request, 'libmansys/user_home.html')
+    return render(request, 'libmansys/user_home.html')
 
 
 def detail(request, ISBN):
@@ -32,3 +20,18 @@ def booklist(request):
     book_list = Book.objects.all()
     context = {'book_list': book_list}
     return render(request, 'libmansys/book_list.html', context)
+
+
+def edit_profile(request):
+    student = Student.objects.get(user_ID=request.user.id)  # getting the current user
+
+    if(request.method == 'POST'):
+        s_form = NewStudentForm(request.POST, instance=student)
+        if s_form.is_valid:
+            s_form.save()
+        return render(request, 'libmansys/user_home.html')
+
+    else:
+        s_form = NewStudentForm(instance=student)
+        context = {'s_form': s_form}
+        return render(request, 'libmansys/update_user_profile.html', context)
