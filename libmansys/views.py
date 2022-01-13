@@ -5,7 +5,7 @@ from .functions import is_new_user
 
 def user_home(request):
     if(is_new_user(request)):
-        pass
+        return render(request, 'libmansys/new_user.html')
     else:
         return render(request, 'libmansys/user_home.html')
 

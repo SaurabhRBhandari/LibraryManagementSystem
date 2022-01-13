@@ -24,4 +24,4 @@ class Student(models.Model):
     hostel = models.IntegerField(default=-1)  # index of college
 
     def __str__(self):
-        return str(self.user_ID)
+        return f'{self.user_ID} [{self.BITS_ID}]'
