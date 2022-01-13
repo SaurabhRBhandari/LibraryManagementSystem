@@ -1,7 +1,7 @@
 {%extends "libmansys/base.html"%}
 {%block content%}
-  {% if book_list %}  
-  <ul>
+{% if book_list %}
+<ul>
   {%for book in book_list%}
   <article class="media content-section">
     <div class="media-body">
@@ -10,15 +10,15 @@
         <small class="text-muted">{{ book.isbn }}</small>
       </div>
       <li><a href="{% url 'libmansys:detail' book.isbn %}">
-        <h3>{{book.name}}</h3></a></li>
+          <h3>{{book.name}}</h3>
+        </a></li>
       <p class="book-summary">{{ book.summary }}</p>
     </div>
   </article>
   {%endfor%}
-  </ul>
-  {%else%}
-  <p>No books are available.</p>
-  {% endif%}
+</ul>
+{%else%}
+<p>No books are available.</p>
+{% endif%}
 
 {%endblock content%}
-
