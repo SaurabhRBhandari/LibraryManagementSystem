@@ -1,8 +1,11 @@
-<h1>{{book.name}}</h1>
-<h2>Author: {{book.author}}</h2>
-<h2>Publisher: {{book.publisher}}</h2>
-<h2>ISBN-10: {{book.isbn}}</h2>
-<h2>Genre: {{book.genre}}</h2>
-<h2>Summary: {{book.summary}}</h2>
-<h2>Location: {{book.location}}</h2>
-<h2>Availability: {{book.availability}}</h2>
+{%extends "libmansys/base.html"%}
+{%block content%}
+    <h1>{{book.name}}</h1>
+    <h2>Author: {{book.author}}</h2>
+    <h2>Publisher: {{book.publisher}}</h2>
+    <h2>ISBN-10: {{book.isbn}}</h2>
+    <h2>Genre: {{book.genre}}</h2>
+    <h2>Summary: {{book.summary}}</h2>
+    <h2>Location: {{book.location}}</h2>
+    <h2>Availability: {{book.availability}}</h2>
+{%endblock content%}
