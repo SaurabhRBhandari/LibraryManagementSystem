@@ -14,20 +14,22 @@ class Book(models.Model):
     def __str__(self):
         return str(self.name) + " ["+str(self.isbn)+']'
 
-HOSTEL_CHOICES=(
-    ("Rana Pratap Bhawan","Rana Pratap Bhawan"),
-    ("Ashok Bhawan","Ashok Bhawan"),
-    ("Bhagirath Bhawan" ,"Bhagirath Bhawan"),
-    ("Vishwakarma Bhawan","Vishwakarma Bhawan"),
-    ("Krishna Bhawan","Krishna Bhawan"),
-    ("Gandhi Bhawan","Gandhi Bhawan"),
-    ("Shankar Bhawan","Shankar Bhawan"),
-    ("Vyas Bhawan","Vyas Bhawan"),
-    ("Ram Bhawan","Ram Bhawan"),
-    ("Budh Bhawan","Budh Bhawan"),
-    ("Meera Bhawan","Meera Bhawan"),
-    ("NOT YET ALLOTED","NOT YET ALLOTED")
+
+HOSTEL_CHOICES = (
+    ("Rana Pratap Bhawan", "Rana Pratap Bhawan"),
+    ("Ashok Bhawan", "Ashok Bhawan"),
+    ("Bhagirath Bhawan", "Bhagirath Bhawan"),
+    ("Vishwakarma Bhawan", "Vishwakarma Bhawan"),
+    ("Krishna Bhawan", "Krishna Bhawan"),
+    ("Gandhi Bhawan", "Gandhi Bhawan"),
+    ("Shankar Bhawan", "Shankar Bhawan"),
+    ("Vyas Bhawan", "Vyas Bhawan"),
+    ("Ram Bhawan", "Ram Bhawan"),
+    ("Budh Bhawan", "Budh Bhawan"),
+    ("Meera Bhawan", "Meera Bhawan"),
+    ("NOT YET ALLOTED", "NOT YET ALLOTED")
 )
+
 
 class Student(models.Model):
     BITS_ID = models.CharField(max_length=20, default='NOT YET UPDATED')
@@ -35,6 +37,8 @@ class Student(models.Model):
     user_ID = models.IntegerField(default=-1)
     mobile_number = models.IntegerField(default=-1)
     room_no = models.IntegerField(default=-1)
-    hostel = models.CharField(max_length=50,choices=HOSTEL_CHOICES,default="NOT YET ALLOTED")
+    hostel = models.CharField(
+        max_length=50, choices=HOSTEL_CHOICES, default="NOT YET ALLOTED")
+
     def __str__(self):
         return f'[{self.BITS_ID}]'
