@@ -9,6 +9,6 @@ urlpatterns = [
     path('<int:ISBN>/', views.detail, name='detail'),
     # give details of all books registered in the library system
     path('all/', views.booklist, name='booklist'),
-    #for changing user profile
-    path('profile/',views.edit_profile,name='profile')
+    # for changing user profile
+    path('profile/', views.edit_profile, name='profile')
 ]

@@ -3,7 +3,9 @@
 <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" />
 <form method="POST">
     {% csrf_token %}
-    <fieldset class="form-group"><h3>{{user.get_full_name}}</h3></legend>
+    <fieldset class="form-group">
+        <h3>{{user.get_full_name}}</h3>
+        </legend>
         <table>
             {{s_form.as_table}}
         </table>

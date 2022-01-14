@@ -23,7 +23,8 @@ def booklist(request):
 
 
 def edit_profile(request):
-    student = Student.objects.get(user_ID=request.user.id)  # getting the current user
+    student = Student.objects.get(
+        user_ID=request.user.id)  # getting the current user
 
     if(request.method == 'POST'):
         s_form = NewStudentForm(request.POST, instance=student)
