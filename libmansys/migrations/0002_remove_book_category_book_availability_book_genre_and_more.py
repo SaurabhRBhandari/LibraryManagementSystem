@@ -6,37 +6,37 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('libmansys', '0001_initial'),
+        ("libmansys", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='book',
-            name='category',
+            model_name="book",
+            name="category",
         ),
         migrations.AddField(
-            model_name='book',
-            name='availability',
+            model_name="book",
+            name="availability",
             field=models.IntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='book',
-            name='genre',
-            field=models.CharField(default='Not Available', max_length=50),
+            model_name="book",
+            name="genre",
+            field=models.CharField(default="Not Available", max_length=50),
         ),
         migrations.AddField(
-            model_name='book',
-            name='location',
-            field=models.CharField(default='Not Available', max_length=200),
+            model_name="book",
+            name="location",
+            field=models.CharField(default="Not Available", max_length=200),
         ),
         migrations.AddField(
-            model_name='book',
-            name='publisher',
-            field=models.CharField(default='Not Available', max_length=200),
+            model_name="book",
+            name="publisher",
+            field=models.CharField(default="Not Available", max_length=200),
         ),
         migrations.AddField(
-            model_name='book',
-            name='summary',
-            field=models.CharField(default='Not Available', max_length=200),
+            model_name="book",
+            name="summary",
+            field=models.CharField(default="Not Available", max_length=200),
         ),
     ]

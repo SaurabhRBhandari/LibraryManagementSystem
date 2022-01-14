@@ -7,16 +7,30 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('libmansys', '0007_alter_student_hostel'),
+        ("libmansys", "0007_alter_student_hostel"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Requested_Book',
+            name="Requested_Book",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('ISBN', models.IntegerField(default=-1)),
-                ('student', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='libmansys.student')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("ISBN", models.IntegerField(default=-1)),
+                (
+                    "student",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="libmansys.student",
+                    ),
+                ),
             ],
         ),
     ]

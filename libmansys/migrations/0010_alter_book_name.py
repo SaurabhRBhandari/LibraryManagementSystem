@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('libmansys', '0009_remove_requested_book_isbn_requested_book_book'),
+        ("libmansys", "0009_remove_requested_book_isbn_requested_book_book"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='book',
-            name='name',
+            model_name="book",
+            name="name",
             field=models.CharField(max_length=50),
         ),
     ]

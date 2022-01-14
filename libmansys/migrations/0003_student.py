@@ -7,21 +7,37 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('auth', '0012_alter_user_first_name_max_length'),
-        ('libmansys', '0002_remove_book_category_book_availability_book_genre_and_more'),
+        ("auth", "0012_alter_user_first_name_max_length"),
+        (
+            "libmansys",
+            "0002_remove_book_category_book_availability_book_genre_and_more",
+        ),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Student',
+            name="Student",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('classroom', models.CharField(max_length=10)),
-                ('branch', models.CharField(max_length=10)),
-                ('roll_no', models.CharField(blank=True, max_length=3)),
-                ('phone', models.CharField(blank=True, max_length=10)),
-                ('image', models.ImageField(blank=True, upload_to='')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='auth.user')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("classroom", models.CharField(max_length=10)),
+                ("branch", models.CharField(max_length=10)),
+                ("roll_no", models.CharField(blank=True, max_length=3)),
+                ("phone", models.CharField(blank=True, max_length=10)),
+                ("image", models.ImageField(blank=True, upload_to="")),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE, to="auth.user"
+                    ),
+                ),
             ],
         ),
     ]

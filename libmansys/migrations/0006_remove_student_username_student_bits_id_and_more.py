@@ -6,37 +6,37 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('libmansys', '0005_remove_student_branch_remove_student_classroom_and_more'),
+        ("libmansys", "0005_remove_student_branch_remove_student_classroom_and_more"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='student',
-            name='username',
+            model_name="student",
+            name="username",
         ),
         migrations.AddField(
-            model_name='student',
-            name='BITS_ID',
-            field=models.CharField(default='NOT YET UPDATED', max_length=20),
+            model_name="student",
+            name="BITS_ID",
+            field=models.CharField(default="NOT YET UPDATED", max_length=20),
         ),
         migrations.AddField(
-            model_name='student',
-            name='hostel',
+            model_name="student",
+            name="hostel",
             field=models.IntegerField(default=-1),
         ),
         migrations.AddField(
-            model_name='student',
-            name='mobile_number',
+            model_name="student",
+            name="mobile_number",
             field=models.IntegerField(default=-1),
         ),
         migrations.AddField(
-            model_name='student',
-            name='room_no',
+            model_name="student",
+            name="room_no",
             field=models.IntegerField(default=-1),
         ),
         migrations.AddField(
-            model_name='student',
-            name='user_ID',
+            model_name="student",
+            name="user_ID",
             field=models.IntegerField(default=-1),
         ),
     ]

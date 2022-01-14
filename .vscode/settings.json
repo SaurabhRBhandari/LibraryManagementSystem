@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "pylint",
+    "python.linting.pep8Enabled":true,
+    "python.linting.pyLintEnabled":true
+
+}

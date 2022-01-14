@@ -1,9 +1,8 @@
-
 from .models import Student
 
 
 def is_new_user(request):
-    '''Adds the current user to student list if not present'''
+    """Adds the current user to student list if not present"""
     student_list = Student.objects.all()  # Get existing students
     student_id_list = []  # Stores the unique IDs of every student
 

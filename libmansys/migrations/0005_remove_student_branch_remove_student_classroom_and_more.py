@@ -7,37 +7,37 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('libmansys', '0004_alter_student_user'),
+        ("libmansys", "0004_alter_student_user"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='student',
-            name='branch',
+            model_name="student",
+            name="branch",
         ),
         migrations.RemoveField(
-            model_name='student',
-            name='classroom',
+            model_name="student",
+            name="classroom",
         ),
         migrations.RemoveField(
-            model_name='student',
-            name='image',
+            model_name="student",
+            name="image",
         ),
         migrations.RemoveField(
-            model_name='student',
-            name='phone',
+            model_name="student",
+            name="phone",
         ),
         migrations.RemoveField(
-            model_name='student',
-            name='roll_no',
+            model_name="student",
+            name="roll_no",
         ),
         migrations.RemoveField(
-            model_name='student',
-            name='user',
+            model_name="student",
+            name="user",
         ),
         migrations.AddField(
-            model_name='student',
-            name='username',
+            model_name="student",
+            name="username",
             field=models.CharField(default=django.utils.timezone.now, max_length=200),
             preserve_default=False,
         ),
