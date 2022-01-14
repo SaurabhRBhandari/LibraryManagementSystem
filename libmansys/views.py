@@ -45,3 +45,9 @@ def edit_profile(request):
         context = {'s_form': s_form}
         return render(request, 'libmansys/update_user_profile.html', context)
 
+def requestedbooklist(request):
+    s = Student.objects.get(
+        user_ID=request.user.id)  # getting the current user
+    book_list = [request.book for request in Requested_Book.objects.filter(student=s)]
+    context = {'book_list': book_list}
+    return render(request, 'libmansys/book_list.html', context)

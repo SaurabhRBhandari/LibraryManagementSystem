@@ -52,3 +52,4 @@ class Requested_Book(models.Model):
     
     def __str__(self):
         return str(self.book) + " "+str(self.student)+''
+

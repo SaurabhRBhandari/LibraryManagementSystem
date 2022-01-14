@@ -16,4 +16,6 @@ urlpatterns = [
     path('request/', BookRequestView.as_view(), name='request'),
     # for changing user profile
     path('profile/', views.edit_profile, name='profile'),
+    # give details of all books requested by the user
+    path('requests/', views.requestedbooklist, name='requests'),
 ]

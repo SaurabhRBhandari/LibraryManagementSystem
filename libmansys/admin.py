@@ -1,4 +1,5 @@
 from django.contrib import admin
-from .models import Book, Student
-admin.site.register(Book)  # Let's the admin edit book's data
-admin.site.register(Student)  # Let's the admin edit student's data
+from .models import Book, Student,Requested_Book
+admin.site.register(Book)  
+admin.site.register(Student)  
+admin.site.register(Requested_Book)
