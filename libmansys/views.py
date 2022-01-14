@@ -1,9 +1,8 @@
-from multiprocessing import Condition
-from django.shortcuts import render, redirect
-from .models import Book, Student
+from django.shortcuts import render
+from .models import Book, Student,Requested_Book
 from .functions import is_new_user
 from .forms import NewStudentForm
-
+from django.views.generic import ListView,CreateView
 
 def user_home(request):
     is_new_user(request)
@@ -15,12 +14,21 @@ def detail(request, ISBN):
     context = {'book': book}
     return render(request, 'libmansys/book_detail.html', context)
 
+class BookListView(ListView):
+    model=Book
+    template_name='libmansys/book_list.html'
+    context_object_name='book_list'
+    ordering=['name']
 
-def booklist(request):
-    book_list = Book.objects.all()
-    context = {'book_list': book_list}
-    return render(request, 'libmansys/book_list.html', context)
-
+class BookRequestView(CreateView):
+    model=Requested_Book
+    fields=['book']
+    
+    def form_valid(self,form):
+        form.instance.student=Student.objects.get(
+        user_ID=self.request.user.id)
+        return super().form_valid(form)
+    
 
 def edit_profile(request):
     student = Student.objects.get(
@@ -36,3 +44,4 @@ def edit_profile(request):
         s_form = NewStudentForm(instance=student)
         context = {'s_form': s_form}
         return render(request, 'libmansys/update_user_profile.html', context)
+

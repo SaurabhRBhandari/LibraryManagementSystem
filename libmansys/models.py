@@ -1,8 +1,9 @@
-from django.db import models
 
+from django.db import models
+from django.urls import reverse
 
 class Book(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=50)
     author = models.CharField(max_length=200)
     publisher = models.CharField(max_length=200, default='Not Available')
     isbn = models.PositiveIntegerField()
@@ -42,3 +43,12 @@ class Student(models.Model):
 
     def __str__(self):
         return f'[{self.BITS_ID}]'
+
+class Requested_Book(models.Model):
+    book=models.ForeignKey(Book,on_delete=models.CASCADE,)
+    student=models.ForeignKey(Student,on_delete=models.CASCADE)
+    def get_absolute_url(self):
+        return reverse("libmansys:user_home")
+    
+    def __str__(self):
+        return str(self.book) + " "+str(self.student)+''

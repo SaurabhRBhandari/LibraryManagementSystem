@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
-
+from .views import (
+    BookListView,
+    BookRequestView,
+)
 app_name = 'libmansys'
 urlpatterns = [
     # redirect the user to user home page
@@ -8,7 +11,9 @@ urlpatterns = [
     # give details for a book with given ISBN
     path('<int:ISBN>/', views.detail, name='detail'),
     # give details of all books registered in the library system
-    path('all/', views.booklist, name='booklist'),
+    path('all/', BookListView.as_view(), name='booklist'),
+    # request a new book
+    path('request/', BookRequestView.as_view(), name='request'),
     # for changing user profile
-    path('profile/', views.edit_profile, name='profile')
+    path('profile/', views.edit_profile, name='profile'),
 ]
