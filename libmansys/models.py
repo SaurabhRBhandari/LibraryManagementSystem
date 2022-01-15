@@ -59,6 +59,9 @@ class Requested_Book(models.Model):
     issue = models.BooleanField(
         default=0
     )
+    reason = models.CharField(
+        max_length=50, default="Provide a reason for rejection"
+    )
 
     def get_absolute_url(self):
         return reverse("libmansys:user_home")

@@ -63,11 +63,21 @@ def edit_profile(request):
         return render(request, "libmansys/update_user_profile.html", context)
 
 
-def requestedbooklist(request):
+def pending_requests(request):
     """Displays all books requested by the student"""
     s = Student.objects.get(
         user_ID=request.user.id)  # getting the current user
     book_list = [request.book for request in Requested_Book.objects.filter(
-        student=s, issue=False)]
+        student=s, issue=False, reason="Provide a reason for rejection")]
     context = {"book_list": book_list}
-    return render(request, "libmansys/book_list.html", context)
+    return render(request, "libmansys/pending_requests.html", context)
+
+
+def issued_books(request):
+    """Displays all books requested by the student"""
+    s = Student.objects.get(
+        user_ID=request.user.id)  # getting the current user
+    book_list = [request.book for request in Requested_Book.objects.filter(
+        student=s, issue=1)]
+    context = {"book_list": book_list}
+    return render(request, "libmansys/issued_books.html", context)
