@@ -39,7 +39,8 @@ class BookRequestView(CreateView):
     fields = ["book"]
 
     def form_valid(self, form):
-        form.instance.student = Student.objects.get(user_ID=self.request.user.id)
+        form.instance.student = Student.objects.get(
+            user_ID=self.request.user.id)
         return super().form_valid(form)
 
 
@@ -53,7 +54,8 @@ def edit_profile(request):
         s_form = NewStudentForm(request.POST, instance=student)
         if s_form.is_valid:
             s_form.save()
-        return render(request, "libmansys/user_home.html")  # redirect user to home page
+        # redirect user to home page
+        return render(request, "libmansys/user_home.html")
 
     else:  # runs when the user wants to change its account details
         s_form = NewStudentForm(instance=student)
@@ -63,7 +65,9 @@ def edit_profile(request):
 
 def requestedbooklist(request):
     """Displays all books requested by the student"""
-    s = Student.objects.get(user_ID=request.user.id)  # getting the current user
-    book_list = [request.book for request in Requested_Book.objects.filter(student=s)]
+    s = Student.objects.get(
+        user_ID=request.user.id)  # getting the current user
+    book_list = [request.book for request in Requested_Book.objects.filter(
+        student=s, issue=False)]
     context = {"book_list": book_list}
     return render(request, "libmansys/book_list.html", context)

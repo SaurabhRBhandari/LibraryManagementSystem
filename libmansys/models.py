@@ -1,3 +1,4 @@
+from pydoc import visiblename
 from django.db import models
 from django.urls import reverse
 
@@ -51,7 +52,13 @@ class Requested_Book(models.Model):
         Book,
         on_delete=models.CASCADE,
     )
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    student = models.ForeignKey(
+        Student,
+        on_delete=models.CASCADE,
+    )
+    issue = models.BooleanField(
+        default=0
+    )
 
     def get_absolute_url(self):
         return reverse("libmansys:user_home")
