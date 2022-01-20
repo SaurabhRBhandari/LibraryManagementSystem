@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template import context
 from .models import *
 from .functions import is_new_user
 from .forms import NewStudentForm
@@ -7,10 +8,12 @@ from django.views.generic import ListView, CreateView
 
 def user_home(request):
     """Home page for a logged in user"""
+    book_list = Book.objects.all()
     is_new_user(
-        request
-    )  # add a new user to the Student model,do nothing for an existing student
-    return render(request, "libmansys/user_home.html")
+        request)  # add a new user to the Student model,do nothing for an existing student
+    student = Student.objects.get(user_ID=request.user.id)
+    context = {"student": student,"book_list":book_list}
+    return render(request, "libmansys/user_home.html", context)
 
 
 def detail(request, ISBN):
