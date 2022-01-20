@@ -8,11 +8,11 @@ from django.views.generic import ListView, CreateView
 
 def user_home(request):
     """Home page for a logged in user"""
-    book_list = Book.objects.all()
+    book_list = Book.objects.all()[:5]
     is_new_user(
         request)  # add a new user to the Student model,do nothing for an existing student
     student = Student.objects.get(user_ID=request.user.id)
-    context = {"student": student,"book_list":book_list}
+    context = {"student": student, "book_list": book_list}
     return render(request, "libmansys/user_home.html", context)
 
 
