@@ -38,7 +38,7 @@ class BookListView(ListView):
 class BookRequestView(CreateView):
     """To request a new book"""
 
-    model = Requested_Book
+    model = RequestedBook
     fields = ["book"]
 
     def form_valid(self, form):
@@ -70,7 +70,7 @@ def pending_requests(request):
     """Displays all books requested by the student"""
     s = Student.objects.get(
         user_ID=request.user.id)  # getting the current user
-    book_list = [request.book for request in Requested_Book.objects.filter(
+    book_list = [request.book for request in RequestedBook.objects.filter(
         student=s, issue=False, reason="Provide a reason for rejection")]
     context = {"book_list": book_list}
     return render(request, "libmansys/pending_requests.html", context)
@@ -80,7 +80,7 @@ def issued_books(request):
     """Displays all books requested by the student"""
     s = Student.objects.get(
         user_ID=request.user.id)  # getting the current user
-    book_list = [request.book for request in Requested_Book.objects.filter(
+    book_list = [request.book for request in RequestedBook.objects.filter(
         student=s, issue=1)]
     context = {"book_list": book_list}
     return render(request, "libmansys/issued_books.html", context)

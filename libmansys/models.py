@@ -1,6 +1,7 @@
 from pydoc import visiblename
 from django.db import models
 from django.urls import reverse
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Book(models.Model):
@@ -34,20 +35,24 @@ HOSTEL_CHOICES = (
 
 
 class Student(models.Model):
-    BITS_ID = models.CharField(max_length=20, default="NOT YET UPDATED")
+    bits_id = models.CharField(max_length=13, default="NOT YET UPDATED")
     # A unique no. generated for every user
     user_ID = models.IntegerField(default=-1)
-    mobile_number = models.IntegerField(default=-1)
+    mobile_number = models.IntegerField(default=-1,
+                                        validators=[
+                                            MaxValueValidator(9999999999),
+                                            MinValueValidator(1000000000),
+                                        ])
     room_no = models.IntegerField(default=-1)
     hostel = models.CharField(
         max_length=50, choices=HOSTEL_CHOICES, default="NOT YET ALLOTED"
     )
 
     def __str__(self):
-        return f"[{self.BITS_ID}]"
+        return f"[{self.bits_id}]"
 
 
-class Requested_Book(models.Model):
+class RequestedBook(models.Model):
     book = models.ForeignKey(
         Book,
         on_delete=models.CASCADE,
